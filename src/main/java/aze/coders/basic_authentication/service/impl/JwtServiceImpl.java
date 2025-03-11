@@ -1,6 +1,7 @@
 package aze.coders.basic_authentication.service.impl;
 
 import aze.coders.basic_authentication.service.JwtService;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,8 +40,8 @@ public class JwtServiceImpl implements JwtService {
     }
 
     @Override
-    public Object parseToken(String token) {
-        return Jwts.parser().verifyWith((SecretKey) getSignKey()).build().parse(token).getPayload();
+    public Claims parseToken(String token) {
+        return (Claims) Jwts.parser().verifyWith((SecretKey) getSignKey()).build().parse(token).getPayload();
 
     }
     private Key getSignKey() {
