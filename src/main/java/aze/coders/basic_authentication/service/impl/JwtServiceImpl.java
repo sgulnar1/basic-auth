@@ -21,7 +21,7 @@ public class JwtServiceImpl implements JwtService {
 
     @Value("${spring.security.jwt.key}")
     private String key;
-    @Value("${spring.security.jwt.expire-time}")
+    @Value("${spring.security.jwt.access-expire-time}")
     private long expireTime;
 
     @Override
